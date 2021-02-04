@@ -36,4 +36,4 @@ flutter:
   fonts:
     - family: Nightscreamers
       fonts:
-        - asset: web/assets/fonts//Nightscreamers-Regular.ttf
+        - asset: web/assets/fonts/nightscreamers-regular.ttf
