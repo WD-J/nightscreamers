@@ -4,16 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
 import 'package:video_player/video_player.dart';
 
-class HomeScreen extends StatefulWidget {
-  static const String id = "";
+class PulseScreen extends StatefulWidget {
+  static const String id = 'pulse_screen';
 
   @override
   State<StatefulWidget> createState() {
-    return _HomeScreenState();
+    return _PulseScreenState();
   }
 }
 
-class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
+class _PulseScreenState extends State<PulseScreen>
+    with TickerProviderStateMixin {
   AnimationController _animationController;
   Animation<double> _animationTween;
 

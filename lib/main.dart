@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nightscreamers/screens/home_screen_numbers_anim.dart';
+import 'package:nightscreamers/screens/pulse_screen.dart';
+import 'package:nightscreamers/screens/slogan_screen.dart';
 // import 'package:nightscreamers/screens/home_screen_pulse.dart';
 
 void main() {
@@ -11,10 +12,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       // title: 'NightScreamers',
-      initialRoute: HomeScreen.id,
+      initialRoute: SloganScreen.id,
       debugShowCheckedModeBanner: false,
       routes: {
-        HomeScreen.id: (context) => HomeScreen(),
+        SloganScreen.id: (context) => SloganScreen(),
+        PulseScreen.id: (context) => PulseScreen(),
       },
     );
   }

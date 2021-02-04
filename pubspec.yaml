@@ -1,6 +1,10 @@
 name: nightscreamers
 description: A new Flutter project.
 
+# When building use:
+# flutter build web --web-renderer canvaskit --release
+# https://flutter.dev/docs/development/tools/web-renderers
+
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 version: 1.0.0+1
