@@ -2,6 +2,8 @@ name: nightscreamers
 description: A new Flutter project.
 
 # When building use:
+# flutter build web --release
+# or
 # flutter build web --web-renderer canvaskit --release
 # https://flutter.dev/docs/development/tools/web-renderers
 
