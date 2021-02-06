@@ -1,4 +1,5 @@
 import 'package:chewie/chewie.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
@@ -91,14 +92,14 @@ class _SloganScreenState extends State<SloganScreen>
                 children: [
                   WordListWidget(
                     wordList: comeList,
-                    alignment: MainAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.end,
                   ),
                   SizedBox(
-                    width: 50.0,
+                    width: 25.0,
                   ),
                   WordListWidget(
                     wordList: screamList,
-                    alignment: MainAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.end,
                   ),
                 ],
               ),
@@ -109,14 +110,14 @@ class _SloganScreenState extends State<SloganScreen>
                 children: [
                   WordListWidget(
                     wordList: withList,
-                    alignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
                   ),
                   SizedBox(
-                    width: 50.0,
+                    width: 25.0,
                   ),
                   WordListWidget(
                     wordList: usList,
-                    alignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
                   ),
                 ],
               ),
@@ -129,47 +130,54 @@ class _SloganScreenState extends State<SloganScreen>
 }
 
 class WordListWidget extends StatelessWidget {
-  const WordListWidget({@required this.wordList, @required this.alignment});
+  const WordListWidget({
+    @required this.wordList,
+    @required this.mainAxisAlignment,
+  });
 
   final List<String> wordList;
-  final MainAxisAlignment alignment;
+  final MainAxisAlignment mainAxisAlignment;
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Expanded(
-        child: ListView.builder(
-          shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
-          scrollDirection: Axis.horizontal,
-          itemCount: wordList.length,
-          itemBuilder: (context, i) {
-            return Column(
-              mainAxisAlignment: alignment,
-              children: [
-                Padding(
-                  padding: i == 1 ? EdgeInsets.only(top: 0.0) : EdgeInsets.zero,
-                  child: GestureDetector(
-                    onTap: () {
-                      // Implement onTap
-                    },
-                    child: Container(
-                      color: Colors.green,
-                      child: Text(
-                        wordList[i],
-                        style: TextStyle(
-                          fontSize: 75.0,
-                          color: Colors.white,
+    return Column(
+      children: [
+        Expanded(
+          child: ListView.builder(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            scrollDirection: Axis.horizontal,
+            itemCount: wordList.length,
+            itemBuilder: (context, i) {
+              return Column(
+                mainAxisAlignment: mainAxisAlignment,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: i == 1 ? 0.0 : 0.0,
+                    ),
+                    child: GestureDetector(
+                      onTap: () {
+                        // Implement onTap
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(2.5),
+                        child: Text(
+                          wordList[i],
+                          style: TextStyle(
+                              fontSize: 50.0,
+                              color: Colors.white,
+                              fontFamily: 'nightscreamers'),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            );
-          },
+                ],
+              );
+            },
+          ),
         ),
-      ),
+      ],
     );
   }
 }
