@@ -76,47 +76,6 @@ class _SloganScreenState extends State<SloganScreen>
     super.dispose();
   }
 
-  /*
-                        FittedBox(
-                        fit: BoxFit.scaleDown,
-                        child: AnimatedContainer(
-                          duration: Duration(seconds: 2),
-                          curve: oneAnim
-                              ? Curves.fastLinearToSlowEaseIn
-                              : Curves.easeInCubic,
-                          padding: EdgeInsets.only(
-                            top: oneAnim
-                                ? 0.0
-                                : MediaQuery.of(context).size.height,
-                          ),
-                          child: InkWell(
-                            onTap: () {
-                              clickable == true
-                                  ? oneAnim == true
-                                      ? setState(() {
-                                          oneAnim = false;
-                                          transitionFunction();
-                                        })
-                                      : null
-                                  : null;
-                            },
-                            focusColor: Colors.transparent,
-                            splashColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            child: Text(
-                              '1',
-                              style: TextStyle(
-                                fontSize: 250,
-                                fontFamily: 'Nightscreamers',
-                                color: Colors.black,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-   */
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -134,7 +93,9 @@ class _SloganScreenState extends State<SloganScreen>
                     wordList: comeList,
                     alignment: MainAxisAlignment.end,
                   ),
-                  SizedBox(width: 50.0),
+                  SizedBox(
+                    width: 50.0,
+                  ),
                   WordListWidget(
                     wordList: screamList,
                     alignment: MainAxisAlignment.end,
@@ -150,7 +111,9 @@ class _SloganScreenState extends State<SloganScreen>
                     wordList: withList,
                     alignment: MainAxisAlignment.start,
                   ),
-                  SizedBox(width: 50.0),
+                  SizedBox(
+                    width: 50.0,
+                  ),
                   WordListWidget(
                     wordList: usList,
                     alignment: MainAxisAlignment.start,
@@ -175,43 +138,36 @@ class WordListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Expanded(
-        child: Container(
-          color: Colors.red,
-          child: ListView.builder(
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            scrollDirection: Axis.horizontal,
-            itemCount: wordList.length,
-            itemBuilder: (context, i) {
-              return Column(
-                mainAxisAlignment: alignment,
-                children: [
-                  Padding(
-                    padding:
-                        i == 1 ? EdgeInsets.only(top: 0.0) : EdgeInsets.zero,
-                    child: GestureDetector(
-                      onTap: () {
-                        // Implement onTap
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(1.0),
-                        child: Container(
-                          color: Colors.green,
-                          child: Text(
-                            wordList[i],
-                            style: TextStyle(
-                              fontSize: 75.0,
-                              color: Colors.white,
-                            ),
-                          ),
+        child: ListView.builder(
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+          scrollDirection: Axis.horizontal,
+          itemCount: wordList.length,
+          itemBuilder: (context, i) {
+            return Column(
+              mainAxisAlignment: alignment,
+              children: [
+                Padding(
+                  padding: i == 1 ? EdgeInsets.only(top: 0.0) : EdgeInsets.zero,
+                  child: GestureDetector(
+                    onTap: () {
+                      // Implement onTap
+                    },
+                    child: Container(
+                      color: Colors.green,
+                      child: Text(
+                        wordList[i],
+                        style: TextStyle(
+                          fontSize: 75.0,
+                          color: Colors.white,
                         ),
                       ),
                     ),
                   ),
-                ],
-              );
-            },
-          ),
+                ),
+              ],
+            );
+          },
         ),
       ),
     );
