@@ -107,6 +107,8 @@ class _SloganScreenState extends State<SloganScreen>
             Expanded(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
+                // CrossAxisAlignment is at start for the AnimatedContainer
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   WordListWidget(
                     wordList: withList,
@@ -118,6 +120,22 @@ class _SloganScreenState extends State<SloganScreen>
                   WordListWidget(
                     wordList: usList,
                     mainAxisAlignment: MainAxisAlignment.start,
+                  ),
+                  // TODO: GET THE POSITION, PASS IT ON AFTER THE ANIMATION.
+                  Padding(
+                    padding: const EdgeInsets.only(top: 41.5, left: 10.0),
+                    child: AnimatedContainer(
+                      duration: Duration(seconds: 2),
+                      curve: Curves.fastLinearToSlowEaseIn,
+                      width: 10.0,
+                      height: 10.0,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(
+                          25.0,
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               ),
