@@ -120,93 +120,98 @@ class _SloganScreenState extends State<SloganScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.white,
       body: AnimatedContainer(
         duration: Duration(seconds: 2),
         curve: Curves.fastLinearToSlowEaseIn,
         color: Colors.black,
         child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Expanded(
-              child: SizedBox(),
-            ),
-            Expanded(
-              child: Container(
-                color: Colors.blue,
-                child: Row(
-                  children: [
-                    Column(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: Container(
-                            color: Colors.red,
-                            child: Center(
-                              child: ListView.builder(
-                                  physics: NeverScrollableScrollPhysics(),
-                                  scrollDirection: Axis.horizontal,
-                                  shrinkWrap: true,
-                                  itemCount: comeList.length,
-                                  itemBuilder:
-                                      (BuildContext context, int index) {
-                                    return Padding(
-                                      padding: const EdgeInsets.all(5.0),
-                                      child: Container(
-                                        color: Colors.green,
-                                        child: Text(
-                                          comeList[index],
-                                          style: TextStyle(fontSize: 75.0),
-                                        ),
-                                      ),
-                                    );
-                                  }),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Expanded(
-                      flex: 2,
-                      child: Container(),
-                    ),
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [],
-                    ),
-                    Expanded(
-                      child: Container(),
-                    ),
-                  ],
-                ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  WordListWidget(
+                    wordList: comeList,
+                    alignment: MainAxisAlignment.end,
+                  ),
+                  SizedBox(width: 50.0),
+                  WordListWidget(
+                    wordList: screamList,
+                    alignment: MainAxisAlignment.end,
+                  ),
+                ],
               ),
             ),
             Expanded(
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Expanded(
-                    child: Container(),
+                  WordListWidget(
+                    wordList: withList,
+                    alignment: MainAxisAlignment.start,
                   ),
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [],
-                  ),
-                  Expanded(
-                    flex: 2,
-                    child: Container(),
-                  ),
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [],
+                  SizedBox(width: 50.0),
+                  WordListWidget(
+                    wordList: usList,
+                    alignment: MainAxisAlignment.start,
                   ),
                 ],
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class WordListWidget extends StatelessWidget {
+  const WordListWidget({@required this.wordList, @required this.alignment});
+
+  final List<String> wordList;
+  final MainAxisAlignment alignment;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Expanded(
+        child: Container(
+          color: Colors.red,
+          child: ListView.builder(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            scrollDirection: Axis.horizontal,
+            itemCount: wordList.length,
+            itemBuilder: (context, i) {
+              return Column(
+                mainAxisAlignment: alignment,
+                children: [
+                  Padding(
+                    padding:
+                        i == 1 ? EdgeInsets.only(top: 0.0) : EdgeInsets.zero,
+                    child: GestureDetector(
+                      onTap: () {
+                        // Implement onTap
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(1.0),
+                        child: Container(
+                          color: Colors.green,
+                          child: Text(
+                            wordList[i],
+                            style: TextStyle(
+                              fontSize: 75.0,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
         ),
       ),
     );
