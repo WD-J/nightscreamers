@@ -67,17 +67,7 @@ class _SloganScreenState extends State<SloganScreen>
     });
   }
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-  }
+  // TODO: Have you disposed everything?
 
   @override
   Widget build(BuildContext context) {
@@ -132,6 +122,7 @@ class _SloganScreenState extends State<SloganScreen>
                         fontSize: 35.0,
                         color: Colors.white,
                         fontFamily: 'nightscreamers',
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
