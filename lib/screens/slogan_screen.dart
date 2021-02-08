@@ -19,7 +19,9 @@ class _SloganScreenState extends State<SloganScreen>
   List<String> screamList = 'SCREAM'.split('');
   List<String> withList = 'WITH'.split('');
   List<String> usList = 'US'.split('');
+
   String period = '.';
+  GlobalKey _keyPeriod = GlobalKey();
 
   // 1973 animation
   bool comeAnim = false;
@@ -95,7 +97,7 @@ class _SloganScreenState extends State<SloganScreen>
                     mainAxisAlignment: MainAxisAlignment.end,
                   ),
                   SizedBox(
-                    width: 25.0,
+                    width: 15.0,
                   ),
                   WordListWidget(
                     wordList: screamList,
@@ -115,25 +117,21 @@ class _SloganScreenState extends State<SloganScreen>
                     mainAxisAlignment: MainAxisAlignment.start,
                   ),
                   SizedBox(
-                    width: 25.0,
+                    width: 15.0,
                   ),
                   WordListWidget(
                     wordList: usList,
                     mainAxisAlignment: MainAxisAlignment.start,
                   ),
-                  // TODO: GET THE POSITION, PASS IT ON AFTER THE ANIMATION.
                   Padding(
-                    padding: const EdgeInsets.only(top: 41.5, left: 10.0),
-                    child: AnimatedContainer(
-                      duration: Duration(seconds: 2),
-                      curve: Curves.fastLinearToSlowEaseIn,
-                      width: 10.0,
-                      height: 10.0,
-                      decoration: BoxDecoration(
+                    padding: const EdgeInsets.all(2.5),
+                    child: Text(
+                      period,
+                      key: _keyPeriod,
+                      style: TextStyle(
+                        fontSize: 35.0,
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(
-                          25.0,
-                        ),
+                        fontFamily: 'nightscreamers',
                       ),
                     ),
                   ),
@@ -183,9 +181,10 @@ class WordListWidget extends StatelessWidget {
                         child: Text(
                           wordList[i],
                           style: TextStyle(
-                              fontSize: 50.0,
-                              color: Colors.white,
-                              fontFamily: 'nightscreamers'),
+                            fontSize: 35.0,
+                            color: Colors.white,
+                            fontFamily: 'nightscreamers',
+                          ),
                         ),
                       ),
                     ),
