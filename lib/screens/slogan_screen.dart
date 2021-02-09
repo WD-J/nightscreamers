@@ -269,7 +269,7 @@ class _WhiteScreenState extends State<WhiteScreen> {
         children: [
           Positioned(
             left: positionPeriod.dx + (sizePeriod.width / 100 * 20),
-            top: positionPeriod.dy + (sizePeriod.height / 100 * 70),
+            top: positionPeriod.dy + (sizePeriod.height / 100 * 66.8),
             child: AnimatedContainer(
               duration: Duration(seconds: 2),
               curve: Curves.fastLinearToSlowEaseIn,
