@@ -160,30 +160,24 @@ class _SloganScreenState extends State<SloganScreen>
                     mainAxisAlignment: MainAxisAlignment.start,
                   ),
                   Container(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(2.5),
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 2.5),
-                            child: Text(
+                    child: Padding(
+                      padding: const EdgeInsets.all(2.5),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 2.5),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
                               '',
                               style: TextStyle(
                                 fontSize: 35.0,
-                                height: 0.70,
+                                height: 0.85,
                                 color: Colors.white,
                                 fontFamily: 'nightscreamers',
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(2.5),
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 2.5),
-                            child: Container(
+                            Container(
                               key: _keyPeriod,
                               width: 5.0,
                               height: 5.0,
@@ -194,9 +188,9 @@ class _SloganScreenState extends State<SloganScreen>
                                 ),
                               ),
                             ),
-                          ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
                   ),
                 ],
