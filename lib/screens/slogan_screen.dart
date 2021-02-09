@@ -160,10 +160,10 @@ class _SloganScreenState extends State<SloganScreen>
                     mainAxisAlignment: MainAxisAlignment.start,
                   ),
                   Padding(
+                    key: _keyPeriod,
                     padding: const EdgeInsets.all(2.5),
                     child: Text(
                       period,
-                      key: _keyPeriod,
                       style: TextStyle(
                         fontSize: 35.0,
                         color: Colors.white,
@@ -268,13 +268,15 @@ class _WhiteScreenState extends State<WhiteScreen> {
       body: Stack(
         children: [
           Positioned(
-            left: positionPeriod.dx + (sizePeriod.width / 100 * 20),
-            top: positionPeriod.dy + (sizePeriod.height / 100 * 66.8),
+            left: positionPeriod.dx + (sizePeriod.width / 100 * 30),
+            top: positionPeriod.dy + (sizePeriod.height / 100 * 65),
             child: AnimatedContainer(
               duration: Duration(seconds: 2),
               curve: Curves.fastLinearToSlowEaseIn,
               width: 5,
               height: 5,
+              // width: 5,
+              // height: 5,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(
