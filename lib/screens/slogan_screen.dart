@@ -159,37 +159,16 @@ class _SloganScreenState extends State<SloganScreen>
                     wordList: usList,
                     mainAxisAlignment: MainAxisAlignment.start,
                   ),
-                  Container(
-                    child: Padding(
-                      padding: const EdgeInsets.all(2.5),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 2.5),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              '',
-                              style: TextStyle(
-                                fontSize: 35.0,
-                                height: 0.85,
-                                color: Colors.white,
-                                fontFamily: 'nightscreamers',
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Container(
-                              key: _keyPeriod,
-                              width: 5.0,
-                              height: 5.0,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                  25.0,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                  Padding(
+                    padding: const EdgeInsets.all(2.5),
+                    child: Text(
+                      '.',
+                      key: _keyPeriod,
+                      style: TextStyle(
+                        fontSize: 35.0,
+                        color: Colors.white,
+                        fontFamily: 'nightscreamers',
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
@@ -289,19 +268,22 @@ class _WhiteScreenState extends State<WhiteScreen> {
       body: Stack(
         children: [
           Positioned(
-            left: positionPeriod.dx,
+            left: positionPeriod.dx + (sizePeriod.width / 100 * 20),
             top: positionPeriod.dy,
-            child: AnimatedContainer(
-              duration: Duration(seconds: 2),
-              curve: Curves.fastLinearToSlowEaseIn,
-              width: 5,
-              height: 5,
-              // width: 5,
-              // height: 5,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(
-                  25.0,
+            child: Padding(
+              padding: EdgeInsets.only(top: sizePeriod.height / 100 * 66.5),
+              child: AnimatedContainer(
+                duration: Duration(seconds: 2),
+                curve: Curves.fastLinearToSlowEaseIn,
+                width: 5,
+                height: 5,
+                // width: 5,
+                // height: 5,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(
+                    25.0,
+                  ),
                 ),
               ),
             ),
