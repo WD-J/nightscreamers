@@ -23,6 +23,24 @@ class _SloganScreenState extends State<SloganScreen>
   String period = '.';
   GlobalKey _keyPeriod = GlobalKey();
 
+  Size _getSizes() {
+    final RenderBox renderBoxPeriod =
+        _keyPeriod.currentContext.findRenderObject();
+    final sizePeriod = renderBoxPeriod.size;
+    print("SIZE of period: $sizePeriod");
+    // flutter: SIZE of period: Size(375.0, 152.9) (x, y)
+    return sizePeriod;
+  }
+
+  Offset _getPositions() {
+    final RenderBox renderBoxPeriod =
+        _keyPeriod.currentContext.findRenderObject();
+    final positionPeriod = renderBoxPeriod.localToGlobal(Offset.zero);
+    print("POSITION of period: $positionPeriod");
+    // flutter: POSITION of period: Offset(0.0, 76.0) (x, y)
+    return positionPeriod;
+  }
+
   // 1973 animation
   bool comeAnim = false;
   bool screamAnim = false;
@@ -68,6 +86,34 @@ class _SloganScreenState extends State<SloganScreen>
   }
 
   // TODO: Have you disposed everything?
+
+  bool toWhite = false;
+  Future<void> transitionToWhite() async {
+    await Future.delayed(Duration(milliseconds: 1000), () {});
+    Navigator.pushReplacement(
+      context,
+      PageRouteBuilder(
+        pageBuilder: (context, animation1, animation2) =>
+            WhiteScreen(sizePeriod: sizePeriod, positionPeriod: positionPeriod),
+        transitionDuration: Duration(seconds: 0),
+      ),
+    );
+  }
+
+  Size sizePeriod;
+  Offset positionPeriod;
+
+  _afterLayout(_) {
+    sizePeriod = _getSizes();
+    positionPeriod = _getPositions();
+  }
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback(_afterLayout);
+    transitionToWhite();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -186,6 +232,59 @@ class WordListWidget extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class WhiteScreen extends StatefulWidget {
+  WhiteScreen({
+    Key key,
+    @required this.sizePeriod,
+    @required this.positionPeriod,
+  }) : super(key: key);
+  final Size sizePeriod;
+  final Offset positionPeriod;
+
+  @override
+  _WhiteScreenState createState() =>
+      _WhiteScreenState(sizePeriod: sizePeriod, positionPeriod: positionPeriod);
+}
+
+class _WhiteScreenState extends State<WhiteScreen> {
+  _WhiteScreenState({
+    @required this.sizePeriod,
+    @required this.positionPeriod,
+  });
+
+  final Size sizePeriod;
+  final Offset positionPeriod;
+
+  // TODO: GET THE POSITION, PASS IT ON AFTER THE ANIMATION.
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: Stack(
+        children: [
+          Positioned(
+            left: positionPeriod.dx + (sizePeriod.width / 100 * 20),
+            top: positionPeriod.dy + (sizePeriod.height / 100 * 70),
+            child: AnimatedContainer(
+              duration: Duration(seconds: 2),
+              curve: Curves.fastLinearToSlowEaseIn,
+              width: 5,
+              height: 5,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(
+                  25.0,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
