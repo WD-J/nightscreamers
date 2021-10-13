@@ -75,8 +75,7 @@ class _WordListWidgetState extends State<WordListWidget> {
                             style: TextStyle(
                               fontSize: 35.0,
                               color: Colors.white,
-                              // TODO: Change to 'Nightscreamers'
-                              fontFamily: 'nightscreamers',
+                              fontFamily: 'Nightscreamers',
                             ),
                           ),
                         ),
