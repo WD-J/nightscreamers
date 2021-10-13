@@ -15,16 +15,18 @@ class PulseScreen extends StatefulWidget {
 
 class _PulseScreenState extends State<PulseScreen>
     with TickerProviderStateMixin {
-  AnimationController _animationController;
-  Animation<double> _animationTween;
+  late AnimationController _animationController;
+  late Animation<double> _animationTween;
 
-  AnimationController _opacityAnimationController;
-  Animation<double> _opacityAnimationTween;
+  late AnimationController _opacityAnimationController;
+  late Animation<double> _opacityAnimationTween;
+
+  late String a;
 
   bool videoActivated = false;
 
-  VideoPlayerController _entryVideo;
-  ChewieController _chewieController;
+  late VideoPlayerController _entryVideo;
+  late ChewieController _chewieController;
 
   Future<void> initializeVideoPlayer() async {
     // TODO: Replace with VideoPlayerController.asset if necessary / efficient
@@ -98,7 +100,7 @@ class _PulseScreenState extends State<PulseScreen>
                   decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.red[900],
+                        color: Colors.red,
                       ),
                       BoxShadow(
                         color: Colors.black,
@@ -143,15 +145,17 @@ class _PulseScreenState extends State<PulseScreen>
                         ),
                       ),
                     ),
-                    Expanded(child: Container()),
-                    Expanded(child: Container()),
+                    // Spacer(flex: 2),
+                    Expanded(child: SizedBox()),
+                    Expanded(child: SizedBox()),
                   ],
                 ),
               ],
             )
           : Center(
-              child: _chewieController != null &&
-                      _chewieController.videoPlayerController.value.initialized
+              child: _chewieController.videoPlayerController.value != null &&
+                      _chewieController
+                          .videoPlayerController.value.isInitialized
                   ? Chewie(
                       controller: _chewieController,
                     )
