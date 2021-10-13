@@ -123,7 +123,7 @@ class _SloganScreenState extends State<SloganScreen>
                         style: TextStyle(
                           fontSize: 35.0,
                           color: Colors.white,
-                          fontFamily: 'nightscreamers',
+                          fontFamily: 'Nightscreamers',
                           fontWeight: FontWeight.bold,
                         ),
                       ),
