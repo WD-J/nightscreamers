@@ -5,18 +5,18 @@ const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
   "assets/AssetManifest.json": "43413cf824b47f2b7afbdc616bd020be",
 "assets/FontManifest.json": "9eb8f3debc866c3b026e09a416b620f7",
-"assets/fonts/MaterialIcons-Regular.otf": "1288c9e28052e028aba623321f7826ac",
+"assets/fonts/MaterialIcons-Regular.otf": "4e6447691c9509f7acdbf8a931a85ca1",
 "assets/fonts/nightscreamers-regular.ttf": "ffbbc68d4d555717f682c68b122a7b39",
-"assets/NOTICES": "4fd627ab67f8c2ff835530c2be363607",
+"assets/NOTICES": "cccdebb547752246c75a774365b46880",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
 "assets/packages/wakelock_web/assets/no_sleep.js": "7748a45cd593f33280669b29c2c8919a",
 "assets/web/assets/fonts/nightscreamers-regular.ttf": "ffbbc68d4d555717f682c68b122a7b39",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
-"index.html": "de864f493ffee34d42783ea71f61ba6f",
-"/": "de864f493ffee34d42783ea71f61ba6f",
-"main.dart.js": "54d1a692c880b881f21351b85c2c16ea",
+"index.html": "2dc6dec494cf6f349a98e6b696d24cef",
+"/": "2dc6dec494cf6f349a98e6b696d24cef",
+"main.dart.js": "913f9dfc85aa41ae86db3c3b59a7e7ba",
 "manifest.json": "7ca779eafa2a4ac59441cac08af4ba63",
 "version.json": "aebdadf076174854aa86f8a74d93e0af"
 };
@@ -36,7 +36,7 @@ self.addEventListener("install", (event) => {
   return event.waitUntil(
     caches.open(TEMP).then((cache) => {
       return cache.addAll(
-        CORE.map((value) => new Request(value + '?revision=' + RESOURCES[value], {'cache': 'reload'})));
+        CORE.map((value) => new Request(value, {'cache': 'reload'})));
     })
   );
 });
@@ -162,7 +162,7 @@ async function downloadOffline() {
     }
     currentContent[key] = true;
   }
-  for (var resourceKey in Object.keys(RESOURCES)) {
+  for (var resourceKey of Object.keys(RESOURCES)) {
     if (!currentContent[resourceKey]) {
       resources.push(resourceKey);
     }
