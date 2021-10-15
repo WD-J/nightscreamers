@@ -7,11 +7,15 @@ class AppRouter {
     switch (settings.name) {
       case SloganScreen.id:
         return MaterialPageRoute(
+          settings: settings,
           builder: (_) => SloganScreen(),
         );
       case PulseScreen.id:
-        return MaterialPageRoute(
-          builder: (_) => PulseScreen(),
+        return PageRouteBuilder(
+          settings: settings,
+          // TODO: can I use builder here? or do I need to use pageBuilder because of the animation?
+          pageBuilder: (_, __, ___) => PulseScreen(),
+          transitionDuration: Duration.zero,
         );
     }
   }

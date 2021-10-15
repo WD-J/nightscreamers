@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nightscreamers/ui/screens/white_screen.dart';
+import 'package:nightscreamers/ui/screens/pulse_screen.dart';
 import 'package:nightscreamers/ui/widgets/word_list_widget.dart';
 
 class SloganScreen extends StatefulWidget {
@@ -38,13 +38,6 @@ class _SloganScreenState extends State<SloganScreen>
     periodY = position.dy;
   }
 
-  void expandPeriod() {
-    setState(() {
-      periodExpanded = true;
-      periodClickable = false;
-    });
-  }
-
   Future<void> checkAllClicked() async {
     if (comeClicked && screamClicked && withClicked && usClicked) {
       await Future.delayed(Duration(seconds: 2));
@@ -61,15 +54,13 @@ class _SloganScreenState extends State<SloganScreen>
     }
   }
 
-  Future<void> transitionToWhite() async {
-    await Future.delayed(Duration(milliseconds: 1000), () {});
-    Navigator.pushReplacement(
-      context,
-      PageRouteBuilder(
-        pageBuilder: (context, animation1, animation2) => WhiteScreen(),
-        transitionDuration: Duration(seconds: 0),
-      ),
-    );
+  Future<void> expandPeriod() async {
+    setState(() {
+      periodExpanded = true;
+      periodClickable = false;
+    });
+    await Future.delayed(Duration(seconds: 2));
+    Navigator.pushReplacementNamed(context, PulseScreen.id);
   }
 
   Color backgroundColor = Colors.black;
