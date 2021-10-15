@@ -19,8 +19,21 @@ class WordListWidget extends StatefulWidget {
 class _WordListWidgetState extends State<WordListWidget> {
   final List<int> animList = [];
 
-  Future<void> startAnimation(int firstInt) async {
-    setState(() => animList.add(firstInt));
+  late List<double> textSizes = [];
+  void setTextSize({required double textSize}) {
+    textSizes = [for (var i = 0; i != widget.wordList.length; ++i) textSize];
+  }
+
+  late List<Color> textColors = [];
+  void setTextColor({required Color textColor}) {
+    textColors = [for (var i = 0; i != widget.wordList.length; ++i) textColor];
+  }
+
+  Future<void> startFallAnimation(int firstInt) async {
+    setState(() {
+      animateTextColor(textInt: firstInt);
+      animList.add(firstInt);
+    });
     await Future.delayed(Duration(milliseconds: 100));
     for (var i = 0; animList.length != widget.wordList.length; i++) {
       late int rng;
@@ -30,6 +43,34 @@ class _WordListWidgetState extends State<WordListWidget> {
       setState(() => animList.add(rng));
       await Future.delayed(Duration(milliseconds: 75));
     }
+  }
+
+  late bool hovering;
+  Duration sizeAnimationDuration = Duration(milliseconds: 100);
+  Curve sizeAnimationCurve = Curves.easeIn;
+
+  Future<void> animateTextColor({required int textInt}) async {
+    sizeAnimationDuration = Duration(milliseconds: 100);
+    setState(() => textColors[textInt] = Colors.red);
+    await Future.delayed(Duration(milliseconds: 100));
+    sizeAnimationDuration = Duration(seconds: 2);
+    setState(() => textColors[textInt] = Colors.white);
+  }
+
+  Future<void> startSizeAnimation() async {
+    // when using, do this inside, or outside of the function:
+    // wait for hover animation to complete
+    // await Future.delayed(sizeAnimationDuration);
+    sizeAnimationDuration = Duration(milliseconds: 3000);
+    sizeAnimationCurve = Curves.linear;
+    setTextSize(textSize: 10.0);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    setTextSize(textSize: 35.0);
+    setTextColor(textColor: Colors.white);
   }
 
   @override
@@ -54,13 +95,22 @@ class _WordListWidgetState extends State<WordListWidget> {
                           : 0.0,
                     ),
                     child: InkWell(
-                      onTap: () {
+                      onTap: () async {
+                        hovering = false;
                         widget.switchClicked();
-                        startAnimation(i);
+                        startFallAnimation(i);
                       },
+                      onHover: (h) {
+                        hovering = h;
+                        setState(() {
+                          hovering
+                              ? textSizes[i] = textSizes[i] + 10.0
+                              : textSizes[i] = textSizes[i] - 10.0;
+                        });
+                      },
+                      highlightColor: Colors.transparent,
                       focusColor: Colors.transparent,
                       hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
                       splashColor: Colors.transparent,
                       child: Padding(
                         padding: const EdgeInsets.all(2.5),
@@ -70,11 +120,15 @@ class _WordListWidgetState extends State<WordListWidget> {
                           angle: animList.contains(i)
                               ? Random().nextInt(50 + 50) - 50
                               : 0,
-                          child: Text(
-                            widget.wordList[i],
+                          child: AnimatedDefaultTextStyle(
+                            duration: sizeAnimationDuration,
+                            curve: sizeAnimationCurve,
+                            child: Text(
+                              widget.wordList[i],
+                            ),
                             style: TextStyle(
-                              fontSize: 35.0,
-                              color: Colors.white,
+                              fontSize: textSizes[i],
+                              color: textColors[i],
                               fontFamily: 'Nightscreamers',
                             ),
                           ),
