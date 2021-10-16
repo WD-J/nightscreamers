@@ -45,6 +45,7 @@ class _SloganScreenState extends State<SloganScreen>
   Future<void> checkAllClicked() async {
     if (comeClicked && screamClicked && withClicked && usClicked) {
       await Future.delayed(Duration(seconds: 2));
+      // TODO: clockAudio.play();
       setState(() {
         backgroundColor = Colors.white;
         periodColor = Colors.black;
@@ -67,18 +68,21 @@ class _SloganScreenState extends State<SloganScreen>
     Navigator.pushReplacementNamed(context, PulseScreen.id);
   }
 
-  final boomAudio = 'web/assets/audio/boom.mp3';
+  final boomSound = 'web/assets/audio/boom.mp3';
+  final clockSound = 'web/assets/audio/clock.mp3';
 
   final comeAudio = AudioPlayer();
   final screamAudio = AudioPlayer();
   final withAudio = AudioPlayer();
   final usAudio = AudioPlayer();
+  final clockAudio = AudioPlayer();
 
   Future<void> setAssets() async {
-    await comeAudio.setAsset(boomAudio);
-    await screamAudio.setAsset(boomAudio);
-    await withAudio.setAsset(boomAudio);
-    await usAudio.setAsset(boomAudio);
+    await comeAudio.setAsset(boomSound);
+    await screamAudio.setAsset(boomSound);
+    await withAudio.setAsset(boomSound);
+    await usAudio.setAsset(boomSound);
+    await clockAudio.setAsset(clockSound);
   }
 
   @override
