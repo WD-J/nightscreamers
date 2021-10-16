@@ -24,7 +24,7 @@ dependencies:
 
   cupertino_icons: ^1.0.3
   animated_rotation: ^2.0.0
-  audioplayers: ^0.20.1
+  just_audio: ^0.9.13
 
 dev_dependencies:
   flutter_test:

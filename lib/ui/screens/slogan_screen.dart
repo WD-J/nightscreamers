@@ -1,5 +1,5 @@
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:nightscreamers/ui/screens/pulse_screen.dart';
 import 'package:nightscreamers/ui/widgets/word_list_widget.dart';
 
@@ -67,23 +67,33 @@ class _SloganScreenState extends State<SloganScreen>
     Navigator.pushReplacementNamed(context, PulseScreen.id);
   }
 
-  AudioPlayer comeAudio = AudioPlayer();
-  AudioPlayer screamAudio = AudioPlayer();
-  AudioPlayer withAudio = AudioPlayer();
-  AudioPlayer usAudio = AudioPlayer();
+  final boomAudio = 'web/assets/audio/boom.mp3';
+
+  final comeAudio = AudioPlayer();
+  final screamAudio = AudioPlayer();
+  final withAudio = AudioPlayer();
+  final usAudio = AudioPlayer();
+
+  Future<void> setAssets() async {
+    await comeAudio.setAsset(boomAudio);
+    await screamAudio.setAsset(boomAudio);
+    await withAudio.setAsset(boomAudio);
+    await usAudio.setAsset(boomAudio);
+  }
 
   @override
   void initState() {
     super.initState();
+    setAssets();
   }
 
   @override
   void dispose() {
-    super.dispose();
     comeAudio.dispose();
     screamAudio.dispose();
     withAudio.dispose();
     usAudio.dispose();
+    super.dispose();
   }
 
   @override
@@ -114,10 +124,7 @@ class _SloganScreenState extends State<SloganScreen>
                               switchClicked: () {
                                 setState(() => comeClicked = true);
                                 checkAllClicked();
-                                comeAudio.play(
-                                  'web/assets/audio/boom.mp3',
-                                  isLocal: true,
-                                );
+                                comeAudio.play();
                               }),
                         ),
                         SizedBox(
@@ -130,10 +137,7 @@ class _SloganScreenState extends State<SloganScreen>
                             switchClicked: () {
                               setState(() => screamClicked = true);
                               checkAllClicked();
-                              screamAudio.play(
-                                'web/assets/audio/boom.mp3',
-                                isLocal: true,
-                              );
+                              screamAudio.play();
                             },
                           ),
                         ),
@@ -160,10 +164,7 @@ class _SloganScreenState extends State<SloganScreen>
                             switchClicked: () {
                               setState(() => withClicked = true);
                               checkAllClicked();
-                              withAudio.play(
-                                'web/assets/audio/boom.mp3',
-                                isLocal: true,
-                              );
+                              withAudio.play();
                             },
                           ),
                         ),
@@ -177,10 +178,7 @@ class _SloganScreenState extends State<SloganScreen>
                             switchClicked: () {
                               setState(() => usClicked = true);
                               checkAllClicked();
-                              usAudio.play(
-                                'web/assets/audio/boom.mp3',
-                                isLocal: true,
-                              );
+                              usAudio.play();
                             },
                           ),
                         ),
