@@ -115,7 +115,7 @@ class _SloganScreenState extends State<SloganScreen>
                                 setState(() => comeClicked = true);
                                 checkAllClicked();
                                 comeAudio.play(
-                                  'assets/audio/boom.mp3',
+                                  'web/assets/audio/boom.mp3',
                                   isLocal: true,
                                 );
                               }),
@@ -131,7 +131,7 @@ class _SloganScreenState extends State<SloganScreen>
                               setState(() => screamClicked = true);
                               checkAllClicked();
                               screamAudio.play(
-                                'assets/audio/boom.mp3',
+                                'web/assets/audio/boom.mp3',
                                 isLocal: true,
                               );
                             },
@@ -161,7 +161,7 @@ class _SloganScreenState extends State<SloganScreen>
                               setState(() => withClicked = true);
                               checkAllClicked();
                               withAudio.play(
-                                'assets/audio/boom.mp3',
+                                'web/assets/audio/boom.mp3',
                                 isLocal: true,
                               );
                             },
@@ -178,7 +178,7 @@ class _SloganScreenState extends State<SloganScreen>
                               setState(() => usClicked = true);
                               checkAllClicked();
                               usAudio.play(
-                                'assets/audio/boom.mp3',
+                                'web/assets/audio/boom.mp3',
                                 isLocal: true,
                               );
                             },
