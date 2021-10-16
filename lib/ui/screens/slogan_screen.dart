@@ -44,8 +44,8 @@ class _SloganScreenState extends State<SloganScreen>
 
   Future<void> checkAllClicked() async {
     if (comeClicked && screamClicked && withClicked && usClicked) {
-      await Future.delayed(Duration(seconds: 2));
-      // TODO: clockAudio.play();
+      await Future.delayed(Duration(milliseconds: 2250));
+      clockAudio.play();
       setState(() {
         backgroundColor = Colors.white;
         periodColor = Colors.black;
