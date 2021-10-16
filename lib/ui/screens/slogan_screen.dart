@@ -67,10 +67,10 @@ class _SloganScreenState extends State<SloganScreen>
     Navigator.pushReplacementNamed(context, PulseScreen.id);
   }
 
-  AudioPlayer comeAudio = AudioPlayer(mode: PlayerMode.LOW_LATENCY);
-  AudioPlayer screamAudio = AudioPlayer(mode: PlayerMode.LOW_LATENCY);
-  AudioPlayer withAudio = AudioPlayer(mode: PlayerMode.LOW_LATENCY);
-  AudioPlayer usAudio = AudioPlayer(mode: PlayerMode.LOW_LATENCY);
+  AudioPlayer comeAudio = AudioPlayer();
+  AudioPlayer screamAudio = AudioPlayer();
+  AudioPlayer withAudio = AudioPlayer();
+  AudioPlayer usAudio = AudioPlayer();
 
   @override
   void initState() {
