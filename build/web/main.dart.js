@@ -51821,7 +51821,7 @@ U.a_w.prototype={
 $0(){var s=this.a
 s.ao(new U.a_v(s))
 s.hR()
-s.fy.jl(0,"assets/audio/boom.mp3",!0)},
+s.fy.jl(0,"web/assets/audio/boom.mp3",!0)},
 $S:0}
 U.a_v.prototype={
 $0(){return this.a.x=!0},
@@ -51830,7 +51830,7 @@ U.a_x.prototype={
 $0(){var s=this.a
 s.ao(new U.a_u(s))
 s.hR()
-s.go.jl(0,"assets/audio/boom.mp3",!0)},
+s.go.jl(0,"web/assets/audio/boom.mp3",!0)},
 $S:0}
 U.a_u.prototype={
 $0(){return this.a.y=!0},
@@ -51839,7 +51839,7 @@ U.a_y.prototype={
 $0(){var s=this.a
 s.ao(new U.a_t(s))
 s.hR()
-s.id.jl(0,"assets/audio/boom.mp3",!0)},
+s.id.jl(0,"web/assets/audio/boom.mp3",!0)},
 $S:0}
 U.a_t.prototype={
 $0(){return this.a.z=!0},
@@ -51848,7 +51848,7 @@ U.a_z.prototype={
 $0(){var s=this.a
 s.ao(new U.a_s(s))
 s.hR()
-s.k1.jl(0,"assets/audio/boom.mp3",!0)},
+s.k1.jl(0,"web/assets/audio/boom.mp3",!0)},
 $S:0}
 U.a_s.prototype={
 $0(){return this.a.Q=!0},

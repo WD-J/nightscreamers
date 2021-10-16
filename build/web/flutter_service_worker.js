@@ -3,19 +3,21 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "assets/AssetManifest.json": "e45a4958cd106549c00e94324e949615",
-"assets/assets/audio/boom.mp3": "ed33e1088c10524960d8fb4c7a7a573a",
-"assets/assets/fonts/nightscreamers-regular.ttf": "ffbbc68d4d555717f682c68b122a7b39",
-"assets/FontManifest.json": "ea51e9bec5aaee2051489f9b782483b4",
+  "assets/AssetManifest.json": "0acef5d8c188e618e875c3706eeabc06",
+"assets/audio/boom.mp3": "ed33e1088c10524960d8fb4c7a7a573a",
+"assets/FontManifest.json": "9eb8f3debc866c3b026e09a416b620f7",
 "assets/fonts/MaterialIcons-Regular.otf": "4e6447691c9509f7acdbf8a931a85ca1",
+"assets/fonts/nightscreamers-regular.ttf": "ffbbc68d4d555717f682c68b122a7b39",
 "assets/NOTICES": "a21e7678563c44c9cf371a746ab6791e",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
+"assets/web/assets/audio/boom.mp3": "ed33e1088c10524960d8fb4c7a7a573a",
+"assets/web/assets/fonts/nightscreamers-regular.ttf": "ffbbc68d4d555717f682c68b122a7b39",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
-"index.html": "98f52b583d774e22be45c335c9d3b1dc",
-"/": "98f52b583d774e22be45c335c9d3b1dc",
-"main.dart.js": "14d34fcfbde87ba019dd7b06867c3480",
+"index.html": "ba994b66bcf83137f9451db134979faf",
+"/": "ba994b66bcf83137f9451db134979faf",
+"main.dart.js": "36aeab30451843894cb8be49f24f4d68",
 "manifest.json": "7ca779eafa2a4ac59441cac08af4ba63",
 "version.json": "aebdadf076174854aa86f8a74d93e0af"
 };
