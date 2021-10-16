@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:nightscreamers/ui/screens/pulse_screen.dart';
 import 'package:nightscreamers/ui/widgets/word_list_widget.dart';
@@ -38,6 +39,9 @@ class _SloganScreenState extends State<SloganScreen>
     periodY = position.dy;
   }
 
+  Color backgroundColor = Colors.black;
+  Color periodColor = Colors.white;
+
   Future<void> checkAllClicked() async {
     if (comeClicked && screamClicked && withClicked && usClicked) {
       await Future.delayed(Duration(seconds: 2));
@@ -63,8 +67,24 @@ class _SloganScreenState extends State<SloganScreen>
     Navigator.pushReplacementNamed(context, PulseScreen.id);
   }
 
-  Color backgroundColor = Colors.black;
-  Color periodColor = Colors.white;
+  AudioPlayer comeAudio = AudioPlayer(mode: PlayerMode.LOW_LATENCY);
+  AudioPlayer screamAudio = AudioPlayer(mode: PlayerMode.LOW_LATENCY);
+  AudioPlayer withAudio = AudioPlayer(mode: PlayerMode.LOW_LATENCY);
+  AudioPlayer usAudio = AudioPlayer(mode: PlayerMode.LOW_LATENCY);
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    comeAudio.dispose();
+    screamAudio.dispose();
+    withAudio.dispose();
+    usAudio.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -94,6 +114,10 @@ class _SloganScreenState extends State<SloganScreen>
                               switchClicked: () {
                                 setState(() => comeClicked = true);
                                 checkAllClicked();
+                                comeAudio.play(
+                                  'assets/audio/boom.mp3',
+                                  isLocal: true,
+                                );
                               }),
                         ),
                         SizedBox(
@@ -106,6 +130,10 @@ class _SloganScreenState extends State<SloganScreen>
                             switchClicked: () {
                               setState(() => screamClicked = true);
                               checkAllClicked();
+                              screamAudio.play(
+                                'assets/audio/boom.mp3',
+                                isLocal: true,
+                              );
                             },
                           ),
                         ),
@@ -132,6 +160,10 @@ class _SloganScreenState extends State<SloganScreen>
                             switchClicked: () {
                               setState(() => withClicked = true);
                               checkAllClicked();
+                              withAudio.play(
+                                'assets/audio/boom.mp3',
+                                isLocal: true,
+                              );
                             },
                           ),
                         ),
@@ -145,6 +177,10 @@ class _SloganScreenState extends State<SloganScreen>
                             switchClicked: () {
                               setState(() => usClicked = true);
                               checkAllClicked();
+                              usAudio.play(
+                                'assets/audio/boom.mp3',
+                                isLocal: true,
+                              );
                             },
                           ),
                         ),
@@ -155,11 +191,16 @@ class _SloganScreenState extends State<SloganScreen>
                                 const EdgeInsets.only(top: 23.5, left: 5.0),
                             child: Container(
                               key: _periodKey,
-                              width: 6.0,
-                              height: 6.0,
-                              decoration: BoxDecoration(
-                                color: periodColor,
-                                shape: BoxShape.circle,
+                              child: AnimatedContainer(
+                                // key: _periodKey,
+                                duration: Duration(seconds: 1),
+                                curve: Curves.easeIn,
+                                width: 6.0,
+                                height: 6.0,
+                                decoration: BoxDecoration(
+                                  color: periodColor,
+                                  shape: BoxShape.circle,
+                                ),
                               ),
                             ),
                           ),
